@@ -1,0 +1,380 @@
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #24bc64; 
+    border-radius: 10px;
+}
+
+
+html,
+body {
+    height: 100vh;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: #101010;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    height: 170px;
+}
+
+nav div {
+    align-self: end;
+    padding-bottom: 27px;
+}
+
+
+nav #beer_link,
+nav #cart_link {
+    padding: 10px;
+    cursor: pointer;
+    color: #eaeaea;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 23px;
+    background-color: #101010;
+    opacity: 1;
+    z-index: 2;
+}
+
+
+/*****************************/
+/* BUBBLES **/
+
+
+@keyframes bubble {
+    0% {
+        opacity: 0.2;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, -150px);
+        opacity: 1;
+    }
+}
+
+.bubble {
+    pointer-events:none;
+    opacity: 0;
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    background-color: transparent;
+    border: #eaeaea solid 2px;
+    border-radius: 10px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    z-index: 3;
+}
+
+.bubble1 {
+    top: 130px;
+    left: 630px;
+}
+
+.bubble2 {
+    top: 120px;
+    left: 620px;
+}
+
+.bubble3 {
+    top: 125px;
+    left: 610px;;
+}
+
+.bubble4 {
+    top: 128px;
+    left: 600px;
+}
+
+.bubble5 {
+    top: 125px;
+    left: 590px;
+}
+
+.bubble6 {
+    top: 110px;
+    left: 580px;
+}
+
+.bubble7 {
+    top: 130px;
+    right: 630px;
+}
+
+.bubble8 {
+    top: 120px;
+    right: 615px;
+}
+
+.bubble9 {
+    top: 125px;
+    right: 600px;
+}
+
+.bubble10 {
+    top: 125px;
+    right: 595px;
+}
+
+.bubble11 {
+    top: 122px;
+    right: 580px;
+}
+
+.bubble12 {
+    top: 122px;
+    right: 570px;
+}
+
+nav #beer_link:hover ~ .bubble,
+nav #cart_link:hover ~ .bubble {
+    animation-name: bubble;
+    -moz-animation-name: bubble;
+    animation-delay: 0;
+}
+
+nav #beer_link:hover ~ .bubble1,
+nav #cart_link:hover ~ .bubble7 {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+nav #beer_link:hover ~ .bubble2,
+nav #cart_link:hover ~ .bubble8 {
+    -webkit-animation-duration: 1.6s;
+    animation-duration: 1.6s;
+}
+
+nav #beer_link:hover ~ .bubble3,
+nav #cart_link:hover ~ .bubble9 {
+    -webkit-animation-duration: 1.9s;
+    animation-duration: 1.9s;
+}
+
+nav #beer_link:hover ~ .bubble4,
+nav #cart_link:hover ~ .bubble10 {
+    -webkit-animation-duration: 2.8s;
+    animation-duration: 2.8s;
+}
+
+nav #beer_link:hover ~ .bubble5,
+nav #cart_link:hover ~ .bubble11 {
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+
+nav #beer_link:hover ~ .bubble6,
+nav #cart_link:hover ~ .bubble12 {
+    -webkit-animation-duration: 2.7s;
+    animation-duration: 2.7s;
+}
+
+
+/*****************************/
+/* FILTERS **/
+
+.content {
+    margin: 75px 0;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 33%;
+    margin: 0 auto 75px;
+}
+
+.filters details {
+	position: relative;
+	width: 300px;
+}
+
+.filters details[open] {
+	z-index: 1;
+}
+
+.filters details summary {
+	padding: 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #eaeaea;
+	list-style: none;
+    font-size: 14px;
+}
+
+.filters details summary::-webkit-details-marker {
+	display: none;
+}
+
+.filters details[open] summary:before {
+	content: '';
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	background: transparent;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.filters details summary:after {
+	content: '';
+	display: inline-block;
+	float: right;
+	width: .5rem;
+	height: .5rem;
+	border-bottom: 1px solid currentColor;
+	border-left: 1px solid currentColor;
+	border-bottom-left-radius: 2px;
+	transform: rotate(45deg) translate(50%, 0%);
+	transform-origin: center center;
+	transition: transform ease-in-out 100ms
+}
+
+.filters details summary:focus {
+	outline: none;
+}
+
+.filters details[open] summary:after {
+	transform: rotate(-45deg) translate(0%, 0%);
+}
+
+.filters details ul {
+	width: 100%;
+	background: #eaeaea;
+	position: absolute;
+	top: calc(100% + .5rem);
+	left: 0;
+	padding: 1rem;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	max-height: 200px;
+	overflow-y: auto;
+    list-style-type: none;
+}
+
+.filters li {
+    margin: 0;
+	padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.filters li:first-child {
+	padding-top: 0;
+}
+
+.filters li:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.filters input::placeholder{
+    font-family: 'Montserrat', sans-serif;
+    color: #101010;
+}
+
+.filters input,
+.filters button {
+    background: #eaeaea;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.filters button {
+    background-color: #24bc64;
+    border: #24bc64;
+}
+
+.filters button:hover {
+    background-color: #1fa858;
+    border: #1fa858;
+    cursor: pointer;
+}
+
+
+
+/*****************************/
+/* GRID **/
+
+.beer-grid {
+    width: 80%;
+    margin: 0 auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 40px 35px;
+    place-items: center;
+    padding: 10px;
+}
+
+.beer-card {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 10px #2e2e2e;
+}
+
+.beer-card img {
+    height: 300px;
+    width: auto;
+    padding: 20px 0;
+    transition: 1.5s;
+}
+
+.beer-card img:hover {
+    cursor: pointer;
+    animation: infinite;
+    transform: rotate(25deg);
+    transition: 0.5s;
+}
+
+
+/*****************************/
+/* MODAL CART **/
+
+#cart_modal {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    height: 60%;
+    width: 70%;
+    background-color: #eaeaea;
+    border-radius: 20px;
+}
+
+#close_modal {
+    position: relative;
+    top: 20px;
+    left: 25px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+} 
