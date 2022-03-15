@@ -45,6 +45,8 @@ nav div {
 
 nav #beer_link,
 nav #cart_link {
+    position: absolute;
+    top: 110px;
     padding: 10px;
     cursor: pointer;
     color: #eaeaea;
@@ -54,6 +56,14 @@ nav #cart_link {
     background-color: #101010;
     opacity: 1;
     z-index: 2;
+}
+
+nav #beer_link {
+    left: 35%;
+}
+
+nav #cart_link {
+    right: 35%;
 }
 
 
@@ -106,62 +116,62 @@ nav #cart_link {
 
 .bubble1 {
     top: 125px;
-    left: 630px;
+    left: 38%;
 }
 
 .bubble2 {
     top: 115px;
-    left: 620px;
+    left: 37.5%;
 }
 
 .bubble3 {
     top: 120px;
-    left: 610px;;
+    left: 37%;
 }
 
 .bubble4 {
     top: 123px;
-    left: 600px;
+    left: 36.5%;
 }
 
 .bubble5 {
     top: 120px;
-    left: 590px;
+    left: 36%;
 }
 
 .bubble6 {
     top: 105px;
-    left: 580px;
+    left: 35.5%;
 }
 
 .bubble7 {
     top: 125px;
-    right: 630px;
+    right: 38%;
 }
 
 .bubble8 {
     top: 115px;
-    right: 615px;
+    right: 37.5%;
 }
 
 .bubble9 {
     top: 120px;
-    right: 600px;
+    right: 37%;
 }
 
 .bubble10 {
     top: 120px;
-    right: 595px;
+    right: 36.5%;
 }
 
 .bubble11 {
     top: 117px;
-    right: 580px;
+    right: 36%;
 }
 
 .bubble12 {
     top: 113px;
-    right: 570px;
+    right: 35.5%;
 }
 
 nav #beer_link:hover ~ .bubble,
@@ -349,6 +359,7 @@ nav #cart_link:hover ~ .bubble12 {
 
 .beer-card {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     height: 100%;
     width: 100%;
@@ -356,21 +367,55 @@ nav #cart_link:hover ~ .bubble12 {
 }
 
 .beer-card .add-cart {
-    position: relative;
-    top: 25px;
-    right: 60px;
-    height: 35px;
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    margin: 10px 20px 20px;
+    align-items: center;
 }
 
-.beer-card .add-cart:hover {
-    transform: scale(1.2);
+.beer-card .add-cart img {
+    height: 50px;
+}
+
+.beer-card .count_nb_item {
+    margin: 0;
+    color: #FFF;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.beer-card .count_nb_item::selection {
+    color:transparent;
+}
+.beer-card .count_nb_item::-moz-selection {
+    color:transparent;
+}
+
+.beer-card .nb_item {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.beer-card .less_item,
+.beer-card .more_item {
+    font-size: 25px;
+}
+
+.beer-card .less_item:hover,
+.beer-card .more_item:hover {
+    font-weight: bold;
+    color: #1fa858;
     cursor: pointer;
 }
 
 .beer-card .beer-img {
     height: 300px;
     width: auto;
-    margin: 20px 34%;
+    margin: 60px auto 0;
     transition: 1.5s;
 }
 
@@ -379,6 +424,22 @@ nav #cart_link:hover ~ .bubble12 {
     animation: infinite;
     transform: rotate(25deg);
     transition: 0.5s;
+}
+
+.beer-card .beer_name {
+    text-align: center;
+    color: #FFF;
+    cursor: default;
+}
+
+.beer-card .brewery {
+    margin: 0 0 20px;
+    padding: 10px;
+    color: #FFF;
+    font-weight: bold;
+    align-self: center;
+    background-color: #1fa858;
+    border-radius: 20px;
 }
 
 
@@ -391,7 +452,8 @@ nav #cart_link:hover ~ .bubble12 {
     top: 20%;
     left: 15%;
     height: 60%;
-    width: 70%;
+    width: 66%;
+    padding: 45px;
     background-color: #eaeaea;
     border-radius: 20px;
 }
@@ -404,3 +466,15 @@ nav #cart_link:hover ~ .bubble12 {
     font-weight: bold;
     cursor: pointer;
 } 
+
+#cart_modal h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#cart_modal #cart_content {
+    width: 70%;
+    margin: 60px auto 0;
+    font-size: 20px;
+    text-align: center;
+}
