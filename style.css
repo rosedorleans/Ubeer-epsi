@@ -342,6 +342,12 @@ nav #cart_link:hover ~ .bubble12 {
     cursor: pointer;
 }
 
+@media only screen and (max-width : 1500px){
+    .filters {
+        width: 50%;
+    }
+}
+
 
 
 /*****************************/
@@ -397,12 +403,12 @@ nav #cart_link:hover ~ .bubble12 {
 
 .beer-card .nb_item {
     margin: 0 10px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .beer-card .less_item,
 .beer-card .more_item {
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .beer-card .less_item:hover,
@@ -412,14 +418,14 @@ nav #cart_link:hover ~ .bubble12 {
     cursor: pointer;
 }
 
-.beer-card .beer-img {
+.beer-card .beer_img {
     height: 300px;
     width: auto;
     margin: 60px auto 0;
     transition: 1.5s;
 }
 
-.beer-card .beer-img:hover {
+.beer-card .beer_img:hover {
     cursor: pointer;
     animation: infinite;
     transform: rotate(25deg);
@@ -432,7 +438,7 @@ nav #cart_link:hover ~ .bubble12 {
     cursor: default;
 }
 
-.beer-card .brewery {
+.brewery {
     margin: 0 0 20px;
     padding: 10px;
     color: #FFF;
@@ -453,28 +459,79 @@ nav #cart_link:hover ~ .bubble12 {
     left: 15%;
     height: 60%;
     width: 66%;
-    padding: 45px;
+    padding: 5px 45px 45px;
     background-color: #eaeaea;
-    border-radius: 20px;
+    overflow-y: scroll;
+}
+
+.modal-header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100vh;
+    align-items: center;
 }
 
 #close_modal {
-    position: relative;
-    top: 20px;
-    left: 25px;
-    padding: 10px;
+    padding: 10px 25px;    
     font-weight: bold;
     cursor: pointer;
 } 
 
 #cart_modal h2 {
+    margin: 10px;
     font-size: 30px;
     text-align: center;
 }
 
+#cart_modal #pay_link {
+    padding: 10px 12px;
+    background-color: #24bc64;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
 #cart_modal #cart_content {
     width: 70%;
-    margin: 60px auto 0;
+    margin: 85px auto 0;
     font-size: 20px;
     text-align: center;
+}
+
+#cart_modal #cart_list {
+    width: 80%;
+    margin: 0 auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px 35px;
+    place-items: center;
+    padding: 10px;
+    list-style-type: none;
+}
+
+#cart_modal #cart_list li {
+    padding: 10px 0;
+}
+
+#cart_modal .beer_img_modal {
+    height: 200px;
+}
+
+#cart_modal .beer_name {
+    margin: 5px 0 15px;
+}
+
+#cart_modal .brewery {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+#cart_modal .nb_beer {
+    
+}
+
+#cart_modal #empty_cart_message {
+    margin: 35% 0;
 }

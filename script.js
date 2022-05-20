@@ -2,7 +2,7 @@
 // Counter items for Card
 
 var nb_beers_in_cart = 0
-var nb_item_for_cart = 0
+
 $('.nb_item').text(0)
 $(".less_item").on( "click", function() {
     var beerCard = findBeerCard($(this))
@@ -12,11 +12,13 @@ $(".less_item").on( "click", function() {
         beerCard.removeClass('beer_in_cart')
     }
 });
+
 $(".more_item").on( "click", function() {
     var beerCard = findBeerCard($(this))
     var id = findId(beerCard)
     changeCountMore(id)
 });
+
 $(".more_item").on("click", function(event) {
     var beerCard = findBeerCard($(this))
     beerCard.addClass('beer_in_cart')
@@ -29,15 +31,25 @@ $("#cart_link").on( "click", function() {
     $("html").css("overflow", 'hidden');
     $('#cart_modal').css('display', 'block')
     $('.content').css('margin', '75px 10px 0 0')
-    if(nb_item_for_cart > 0){
+    if($('.beer-card').hasClass('beer_in_cart')){
         $('#cart_content').append('<ul id="cart_list"></ul>')
         $.each($('.beer_in_cart'), function(index, value){
             var beerName = $(this).find('.beer_name').text()
+            var brewery = $(this).find('.brewery').text()
             var nb_beer = $(this).find('.nb_item').text()
-            $('#cart_list').append('<li>'+beerName+' X'+nb_beer+'</li>')
+            var beer_img_src = $(this).find('.beer_img').attr('src')
+            $('#cart_list').append(
+                '<li>'+
+                    '<img src="'+beer_img_src+'" alt="biere" class="beer_img_modal">'+
+                    '<p class="beer_name">'+beerName+' X'+nb_beer+'</p>'+
+                    '<p class="brewery">'+brewery+'</p>'+
+                    '<span class="nb_beer">'+nb_beer+'</span>'+
+                '</li>'
+            )
         })
     } else {
-        $('#cart_content').append('<p>Aucune bière dans le panier !</p>')
+        $('#cart_content')
+        .append('<p id="empty_cart_message">Aucune bière dans le panier !</p>')
     }
 });
 
@@ -67,13 +79,16 @@ function findId(beerCard){
 }
 
 function changeCountLess(id){
-    if(nb_item_for_cart !== 0){
-        nb_item_for_cart--
-        $('#beer_'+id).find('.nb_item').text(nb_item_for_cart)
+    var nb_item_for_cart = $('#beer_'+id).find('.nb_item')
+    var value = parseInt(nb_item_for_cart.text(), 10) - 1;
+    nb_item_for_cart.text(value)
+    if(value < 0){
+        nb_item_for_cart.text(0)
     }
 }
 
 function changeCountMore(id){
-    nb_item_for_cart++
-    $('#beer_'+id).find('.nb_item').text(nb_item_for_cart)
+    var nb_item_for_cart = $('#beer_'+id).find('.nb_item')
+    var value = parseInt(nb_item_for_cart.text(), 10) + 1;
+    nb_item_for_cart.text(value)
 }
